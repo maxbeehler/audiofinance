@@ -8,7 +8,7 @@ from scipy.signal import resample
 
 def write_wav(data, filename, framerate, amplitude):
     wavfile = wave.open(filename,'w')
-    nchannels = 2
+    nchannels = 1
     sampwidth = 2
     framerate = framerate
     nframes = len(data)
@@ -50,5 +50,5 @@ if __name__ == "__main__":
         arr /= numpy.max(numpy.abs(data)) #Divide all your samples by the max sample value
         filename_head, extension = fname.rsplit(".", 1)
         data_resampled = resample( arr, len(data) )
-        wavfile.write('rec.wav', 16000, data_resampled) #resampling at 16khz
+        wavfile.write('output.wav', 16000, data_resampled) #resampling at 16khz
         print ("File written succesfully !")
